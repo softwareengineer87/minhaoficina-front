@@ -18,7 +18,7 @@ function CreatePdf({
 }: CreatePdfProps) {
   const getTargetElement = () => document.getElementById('content-id');
 
-const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
 
   function changeFile(e: any) {
     if (!e.target.files) return;
@@ -76,11 +76,11 @@ const [previewImages, setPreviewImages] = useState<string[]>([]);
             </div>
           </li>
         </ul>
-        <div className='parts'>
+        <div className='parts-pdf'>
           <h3>peças e serviços</h3>
           <ul>
             {partsList.map((part) => (
-              <li className='part' key={part.partId}>
+              <li className='part-pdf' key={part.partId}>
                 <p>{part.name}</p>
                 <span>{formatPrice(part.price)}</span>
               </li>

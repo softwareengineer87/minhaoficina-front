@@ -6,7 +6,7 @@
 }
 
 .pdf-container .preview-image {
-  width: 100%;
+  width: 40%;
   object-fit: cover;
   border-radius: .5rem;
   margin-top: 1rem;
@@ -29,24 +29,25 @@
   gap: 1rem;
 }
 
-.pdf-container .parts {
+.pdf-container .parts-pdf {
+  flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.parts .part {
+.parts-pdf .part-pdf {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.parts .part p {
+.parts-pdf .part-pdf p {
   font-size: 1.2rem;
 }
 
-.parts .part span {
+.parts-pdf .part-pdf span {
   font-weight: 700;
   font-size: 1.3rem;
 }
