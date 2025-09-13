@@ -1,10 +1,8 @@
 import generatePDF from 'react-to-pdf';
 import type Launch from '../../models/Launch';
-import Image from 'next/image';
-import { formatDate, formatPrice } from '@/utils/FormatPrice';
+import { formatPrice } from '@/utils/FormatPrice';
 import { PartPdf } from '../../models/Part';
-import useLaunch from '@/data/hooks/useLaunch';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './pdf.css';
 
 interface CreatePdfProps {
@@ -20,18 +18,7 @@ function CreatePdf({
 }: CreatePdfProps) {
   const getTargetElement = () => document.getElementById('content-id');
 
-  const {
-    loadPhoto
-  } = useLaunch();
-
-  const [previewImages, setPreviewImages] = useState([]);
-  const [file, setFile] = useState(null);
-  const [createObjectURL, setCreateObjectURL] = useState(null);
-
-  async function getPhotos() {
-    const dataPhoto = await loadPhoto(data.launchId);
-    setImage(dataPhoto);
-  }
+const [previewImages, setPreviewImages] = useState<string[]>([]);
 
   function changeFile(e: any) {
     if (!e.target.files) return;
@@ -39,7 +26,7 @@ function CreatePdf({
       const files = e.target.files;
       if (files) {
         const arrayFiles = Array.from(files);
-        const urls = arrayFiles.map((file) => URL.createObjectURL(file));
+        const urls = arrayFiles.map((file) => URL.createObjectURL(file as File));
         setPreviewImages(urls);
       }
     }

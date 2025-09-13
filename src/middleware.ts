@@ -1,3 +1,4 @@
+/*
 import { MiddlewareConfig, NextRequest, NextResponse } from "next/server";
 
 const publicRoutes = [
@@ -38,4 +39,4 @@ export const config: MiddlewareConfig = {
   ]
 }
 
-
+*/

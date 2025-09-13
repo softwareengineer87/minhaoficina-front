@@ -1,12 +1,9 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type Launch from '../../models/Launch';
 import './form-launch.css';
-import useLaunch from '../../data/hooks/useLaunch';
-import { Message } from '../Message';
-import { useRouter } from 'next/navigation';
-import { IconX } from '@tabler/icons-react';
 import { PartPdf } from '@/models/Part';
 import { formatPrice } from '@/utils/FormatPrice';
+import { IconX } from '@tabler/icons-react';
 
 interface FormLaunchProps {
   changeLaunch(launch: Launch): void;
@@ -25,37 +22,9 @@ function Formlaunch({
   changePart,
 }: FormLaunchProps) {
 
-  const [file, setFile] = useState(null);
   const [partName, setPartName] = useState<string>('');
   const [partPrice, setPartPrice] = useState<string>('');
   const [parts, setParts] = useState<PartPdf[]>([]);
-  const { push } = useRouter();
-
-
-  const {
-    saveLaunch,
-    savePhoto,
-    savePart,
-    loadParts,
-    partsList,
-    dataPhoto,
-    idLaunch,
-    message,
-    status,
-    activeMessage
-  } = useLaunch();
-
-  async function handleForm() {
-    await saveLaunch(launch);
-    changeLaunch({} as Launch);
-  }
-
-  function timeMessage() {
-    setTimeout(() => {
-      setShowMessage(false);
-      setMessagePhoto('');
-    }, 5000);
-  }
 
   function generateId() {
     return Math.floor(Math.random() * 1000) + 1;
@@ -98,11 +67,6 @@ function Formlaunch({
       form-launch-container
       }
     `}>
-      <Message
-        message={message}
-        status={status}
-        activeMessage={activeMessage}
-      />
       <div className='form-launch'>
         <form className='forms'>
           <div className='box-inputs'>

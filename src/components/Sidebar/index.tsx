@@ -1,15 +1,19 @@
 'use client';
 
-import { IconChevronCompactLeft, IconChevronCompactRight, IconHome, IconLogout2, IconTools, IconUser } from '@tabler/icons-react';
+import {
+  IconChevronCompactLeft,
+  IconChevronCompactRight,
+  IconHome,
+  IconTools,
+  IconUser
+} from '@tabler/icons-react';
 import './sidebar.css';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../data/contexts/AuthContext';
+import { useState } from 'react';
 import Link from 'next/link';
 
 function Sidebar() {
 
   const [open, setOpen] = useState<boolean>(false);
-  const { logout } = useContext(AuthContext);
 
   function openSidebar() {
     setOpen((state) => !state);
@@ -35,12 +39,6 @@ function Sidebar() {
           </ul>
         </nav>
       </div>
-      <button
-        onClick={logout}
-        className='btn-logout'>
-        <IconLogout2 className='icon-logout' stroke={1} />
-        <span className='close'>Sair</span>
-      </button>
     </section>
   );
 }
